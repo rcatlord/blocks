@@ -73,13 +73,13 @@ class: inverse, middle, center
 ---
 class: middle, center
 ```{r, echo=FALSE, out.width="70%", fig.align='center', fig.cap='<a href="https://twitter.com/jburnmurdoch/status/1237737352879112194">John Burn-Murdoch, Financial Times</a>'}
-knitr::include_graphics("img/ft.jpeg")
+knitr::include_graphics("img/FT.jpeg")
 ```
 
 ---
 class: middle, center
 ```{r, echo=FALSE, out.width="60%", fig.align='center', fig.cap='<a href="https://www.bbc.co.uk/news/business-43668187">Clara Guibourg, BBC</a>'}
-knitr::include_graphics("img/bbc.png")
+knitr::include_graphics("img/BBC.png")
 ```
 
 ---
