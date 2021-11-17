@@ -1,4 +1,5 @@
 ---
+title: "R for datavis"
 output:
   xaringan::moon_reader:
     css: ["default", "styles.css"]
