@@ -1,0 +1,1175 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+  <head>
+    <title>index.knit</title>
+    <meta charset="utf-8" />
+    <script src="libs/header-attrs/header-attrs.js"></script>
+    <link href="libs/remark-css/default.css" rel="stylesheet" />
+    <link rel="stylesheet" href="styles.css" type="text/css" />
+  </head>
+  <body>
+    <textarea id="source">
+
+
+
+
+
+class: title-slide, center, middle
+
+###&lt;img src="img/R_logo.png" alt="R logo" style="width:30%;"&gt;for data vis
+.large[Henry Partridge | Blocks | 18 November 2021]
+
+---
+### What is R?
+
+--
+
+R is an open source programming language for statistical analysis and data visualisation. It was developed by Ross Ihaka and Robert Gentleman of the University of Auckland and released in 1995. There are now over 18,000 [packages available for R](https://cran.r-project.org/web/packages) which provide functions for machine learning, genomics, time series forecasting, and interactive graphics amongst many others. 
+
+--
+
+R is widely used in academia and by well known companies like [Google](https://ai.google/research/pubs/pub37483), [Netflix](https://www.youtube.com/watch?v=dLKky1xIxtc) and [Airbnb](https://peerj.com/preprints/3182/) for data analytics. Many graphics published by news outlets like the [Financial Times](https://johnburnmurdoch.github.io/slides/r-ggplot/#/), the [Economist](https://view.e.economist.com/?qs=9db46a5ab8bd7989e9ad83c0c1650b6b53bf423e258162b83d2ab809d5b02a0c745255e59bca0c4d53d68352d64da4c9437ab0ee8ccf8f138b3357580df1c002e0b9ba32c4a47c1318509016cc731ea1) and the [BBC](https://twitter.com/chrisjeavans/status/1011694262935834629) are  generated in R. 
+
+---
+### Why use R?
+
+--
+
+- free
+- open source
+- advanced statistical analysis
+- publication ready graphics
+
+--
+
+&lt;/br&gt;
+Since R is a language it is also:
+
+- open
+- shareable
+- reproducibile
+- human readable
+- [diffable](https://en.wiktionary.org/wiki/diffable)
+
+---
+### Are there any disadvantages?
+
+--
+&lt;/br&gt;
+&lt;div align="center"&gt;
+&lt;img src="img/learning_curve.jpeg" height=450&gt;
+&lt;/div&gt;
+
+---
+class: inverse, middle, center
+# Example visualisations
+
+---
+class: middle, center
+&lt;div class="figure" style="text-align: center"&gt;
+&lt;img src="img/ft.jpeg" alt="&amp;lt;a href=&amp;quot;https://twitter.com/jburnmurdoch/status/1237737352879112194&amp;quot;&amp;gt;John Burn-Murdoch, Financial Times&amp;lt;/a&amp;gt;" width="70%" /&gt;
+&lt;p class="caption"&gt;&lt;a href="https://twitter.com/jburnmurdoch/status/1237737352879112194"&gt;John Burn-Murdoch, Financial Times&lt;/a&gt;&lt;/p&gt;
+&lt;/div&gt;
+
+---
+class: middle, center
+&lt;div class="figure" style="text-align: center"&gt;
+&lt;img src="img/bbc.png" alt="&amp;lt;a href=&amp;quot;https://www.bbc.co.uk/news/business-43668187&amp;quot;&amp;gt;Clara Guibourg, BBC&amp;lt;/a&amp;gt;" width="60%" /&gt;
+&lt;p class="caption"&gt;&lt;a href="https://www.bbc.co.uk/news/business-43668187"&gt;Clara Guibourg, BBC&lt;/a&gt;&lt;/p&gt;
+&lt;/div&gt;
+
+---
+class: middle, center
+&lt;div class="figure" style="text-align: center"&gt;
+&lt;img src="img/economist.png" alt="&amp;lt;a href=&amp;quot;https://twitter.com/baskerhel/status/1404404987002818562&amp;quot;&amp;gt;Helen Atkinson, Economist&amp;lt;/a&amp;gt;" width="50%" /&gt;
+&lt;p class="caption"&gt;&lt;a href="https://twitter.com/baskerhel/status/1404404987002818562"&gt;Helen Atkinson, Economist&lt;/a&gt;&lt;/p&gt;
+&lt;/div&gt;
+
+---
+class: inverse, middle, center
+# RStudio
+
+---
+### RStudio
+
+[RStudio](https://www.rstudio.com/products/RStudio/) is an integrated development environment (IDE) for R. It's intuitive interface makes working with R much easier. It supports syntax highlighting, tab completion and is integrated with [R Markdown](https://rmarkdown.rstudio.com/). 
+
+RStudio is freely available under the [GNU Affero General Public License v3](http://www.gnu.org/licenses/agpl-3.0-standalone.html). A commercial desktop license is also available.
+
+---
+### The panes      
+
+&lt;div style= "float:right; position: relative; padding-left: 30px; padding-bottom: 30px;"&gt;
+
+&lt;img src="img/rstudio_panes.png" width="500px" /&gt;
+
+&lt;/div&gt;
+
+RStudio has four different panes:
+
+- The **Console** pane (top left) is used to execute R commands immediately.
+
+- The **Environment** pane (top right) shows the datasets, models, and plots that are loaded in the current R session. This pane also contains tabs with a scrollable history of executed code, connections to databases and [Git](https://git-scm.com/) options.
+
+- The **Files** pane (bottom right) shows plots and interactive web content, help documentation, previous commands, and R packages that you can install and load.
+
+- The **Source** pane (bottom left) appears when you open a new file e.g. *File -&gt; New File -&gt; R Script*. Code can be saved in dedicated .R scripts and executed in the console with Ctl-Enter/Cmd-Enter. Syntax highlighting and tab completion are also available.
+
+---
+class: inverse, middle, center
+# Setup
+
+---
+### Organise your project       
+Adopting a consistent folder structure for your data analyses will help to ensure that your projects are reproducible. A project can be organised using a simple file structure like this:
+
+```
+project/
+|
+├── data/          # store your datasets
+|
+├── script.R       # your R script
+|
+└── output/        # all your plots, models etc
+```
+
+---
+### Set your working directory   
+Point your R session to your project folder using: *Session &gt; Set Working Directory &gt; Choose Directory*
+
+NB It's not good practice to set your working directory at the top of your R script because absolute paths don't promote reproducibility.
+
+*Optional*: Set up a [project in RStudio](https://support.rstudio.com/hc/en-us/articles/200526207-Using-Projects)
+
+---
+### Open a new R script       
+*File &gt; New File &gt; R Script*
+
+---
+### Install R packages    
+You only need to install an R package once. Subsequent package updates can be handled by selecting *Packages &gt; Update* in the **Files** pane of RStudio.
+
+```r
+install.packages("tidyverse")
+```
+
+---
+### Load R packages 
+Packages need to be loaded at the start of every R session to give you access to the functions you need.
+
+```r
+library(tidyverse)
+```
+
+---
+class: inverse, middle, center
+# Import
+
+---
+### Importing data
+
+R can handle a range of data formats: .xlsx, .csv, .txt, .sav, .shp etc. Some data formats require specific packages.
+
+We are going to install and load another package called [readxl](https://readxl.tidyverse.org) so that we can import an Excel file.
+
+
+```r
+install.packages("readxl")
+library(readxl)
+```
+
+Next we'll download and import some CO&lt;sub&gt;2&lt;/sub&gt; emissions data collected by the [Global Carbon Project](http://www.globalcarbonatlas.org/en/CO2-emissions).
+
+
+```r
+read_xlsx("data/co2_emissions.xlsx")
+```
+
+---
+
+```
+# A tibble: 2 × 222
+  `Territorial emi… ...2   ...3  ...4  ...5  ...6  ...7  ...8  ...9  ...10 ...11
+              &lt;dbl&gt; &lt;chr&gt;  &lt;chr&gt; &lt;chr&gt; &lt;chr&gt; &lt;chr&gt; &lt;chr&gt; &lt;chr&gt; &lt;chr&gt; &lt;chr&gt; &lt;chr&gt;
+1                NA Afgha… Alba… Alge… Ando… Ango… Angu… Anti… Arge… Arme… Aruba
+2              2020 12.16… 4.53… 154.… 0.46… 22.1… 0.12… 0.43… 156.… 5.89… 0.75…
+# … with 211 more variables: ...12 &lt;chr&gt;, ...13 &lt;chr&gt;, ...14 &lt;chr&gt;,
+#   ...15 &lt;chr&gt;, ...16 &lt;chr&gt;, ...17 &lt;chr&gt;, ...18 &lt;chr&gt;, ...19 &lt;chr&gt;,
+#   ...20 &lt;chr&gt;, ...21 &lt;chr&gt;, ...22 &lt;chr&gt;, ...23 &lt;chr&gt;, ...24 &lt;chr&gt;,
+#   ...25 &lt;chr&gt;, ...26 &lt;chr&gt;, ...27 &lt;chr&gt;, ...28 &lt;chr&gt;, ...29 &lt;chr&gt;,
+#   ...30 &lt;chr&gt;, ...31 &lt;chr&gt;, ...32 &lt;chr&gt;, ...33 &lt;chr&gt;, ...34 &lt;chr&gt;,
+#   ...35 &lt;chr&gt;, ...36 &lt;chr&gt;, ...37 &lt;chr&gt;, ...38 &lt;chr&gt;, ...39 &lt;chr&gt;,
+#   ...40 &lt;chr&gt;, ...41 &lt;chr&gt;, ...42 &lt;chr&gt;, ...43 &lt;chr&gt;, ...44 &lt;chr&gt;, …
+```
+
+--
+&lt;/br&gt;
+&lt;img src="img/spreadsheet.png" width="80%" style="display: block; margin: auto auto auto 0;" /&gt;
+
+
+---
+class: inverse, middle, center
+# Tidy
+
+---
+### Tidying data
+
+Tidy data are structured for use in R and satisfy three rules:
+
+1. Each variable must have its own column
+2. Each observation must have its own row
+3. Each value must have its own cell
+
+&lt;/br&gt;
+&lt;figure&gt;
+&lt;img src="img/tidy_data.png" alt="tidy data" style="width:60%;"/&gt;
+ &lt;figcaption&gt;
+ Source: &lt;a href="https://r4ds.had.co.nz/tidy-data.html"&gt;R for Data Science&lt;/a&gt;
+ &lt;/figcaption&gt;
+&lt;/figure&gt;
+&lt;/br&gt;
+
+---
+count: false
+ 
+### Tidying data
+.panel1-tidy-auto[
+
+```r
+*read_xlsx("data/co2_emissions.xlsx", skip = 1)
+```
+]
+ 
+.panel2-tidy-auto[
+
+```
+# A tibble: 1 × 222
+   ...1 Afghanistan Albania Algeria Andorra Angola Anguilla `Antigua and Barbud…
+  &lt;dbl&gt;       &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;  &lt;dbl&gt;    &lt;dbl&gt;                &lt;dbl&gt;
+1  2020        12.2    4.53    155.   0.466   22.2    0.123                0.430
+# … with 214 more variables: Argentina &lt;dbl&gt;, Armenia &lt;dbl&gt;, Aruba &lt;dbl&gt;,
+#   Australia &lt;dbl&gt;, Austria &lt;dbl&gt;, Azerbaijan &lt;dbl&gt;, Bahamas &lt;dbl&gt;,
+#   Bahrain &lt;dbl&gt;, Bangladesh &lt;dbl&gt;, Barbados &lt;dbl&gt;, Belarus &lt;dbl&gt;,
+#   Belgium &lt;dbl&gt;, Belize &lt;dbl&gt;, Benin &lt;dbl&gt;, Bermuda &lt;dbl&gt;, Bhutan &lt;dbl&gt;,
+#   Bolivia &lt;dbl&gt;, Bonaire, Saint Eustatius and Saba &lt;dbl&gt;,
+#   Bosnia and Herzegovina &lt;dbl&gt;, Botswana &lt;dbl&gt;, Brazil &lt;dbl&gt;,
+#   British Virgin Islands &lt;dbl&gt;, Brunei Darussalam &lt;dbl&gt;, Bulgaria &lt;dbl&gt;, …
+```
+]
+
+---
+count: false
+ 
+### Tidying data
+.panel1-tidy-auto[
+
+```r
+read_xlsx("data/co2_emissions.xlsx", skip = 1) %&gt;%
+* rename(year = 1)
+```
+]
+ 
+.panel2-tidy-auto[
+
+```
+# A tibble: 1 × 222
+   year Afghanistan Albania Algeria Andorra Angola Anguilla `Antigua and Barbud…
+  &lt;dbl&gt;       &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;  &lt;dbl&gt;    &lt;dbl&gt;                &lt;dbl&gt;
+1  2020        12.2    4.53    155.   0.466   22.2    0.123                0.430
+# … with 214 more variables: Argentina &lt;dbl&gt;, Armenia &lt;dbl&gt;, Aruba &lt;dbl&gt;,
+#   Australia &lt;dbl&gt;, Austria &lt;dbl&gt;, Azerbaijan &lt;dbl&gt;, Bahamas &lt;dbl&gt;,
+#   Bahrain &lt;dbl&gt;, Bangladesh &lt;dbl&gt;, Barbados &lt;dbl&gt;, Belarus &lt;dbl&gt;,
+#   Belgium &lt;dbl&gt;, Belize &lt;dbl&gt;, Benin &lt;dbl&gt;, Bermuda &lt;dbl&gt;, Bhutan &lt;dbl&gt;,
+#   Bolivia &lt;dbl&gt;, Bonaire, Saint Eustatius and Saba &lt;dbl&gt;,
+#   Bosnia and Herzegovina &lt;dbl&gt;, Botswana &lt;dbl&gt;, Brazil &lt;dbl&gt;,
+#   British Virgin Islands &lt;dbl&gt;, Brunei Darussalam &lt;dbl&gt;, Bulgaria &lt;dbl&gt;, …
+```
+]
+
+---
+count: false
+ 
+### Tidying data
+.panel1-tidy-auto[
+
+```r
+read_xlsx("data/co2_emissions.xlsx", skip = 1) %&gt;%
+  rename(year = 1) %&gt;%
+* pivot_longer(-year, names_to = "country", values_to = "value")
+```
+]
+ 
+.panel2-tidy-auto[
+
+```
+# A tibble: 221 × 3
+    year country               value
+   &lt;dbl&gt; &lt;chr&gt;                 &lt;dbl&gt;
+ 1  2020 Afghanistan          12.2  
+ 2  2020 Albania               4.53 
+ 3  2020 Algeria             155.   
+ 4  2020 Andorra               0.466
+ 5  2020 Angola               22.2  
+ 6  2020 Anguilla              0.123
+ 7  2020 Antigua and Barbuda   0.430
+ 8  2020 Argentina           157.   
+ 9  2020 Armenia               5.89 
+10  2020 Aruba                 0.753
+# … with 211 more rows
+```
+]
+
+---
+count: false
+ 
+### Tidying data
+.panel1-tidy-auto[
+
+```r
+read_xlsx("data/co2_emissions.xlsx", skip = 1) %&gt;%
+  rename(year = 1) %&gt;%
+  pivot_longer(-year, names_to = "country", values_to = "value") %&gt;%
+* pivot_wider(names_from = country, values_from = value)
+```
+]
+ 
+.panel2-tidy-auto[
+
+```
+# A tibble: 1 × 222
+   year Afghanistan Albania Algeria Andorra Angola Anguilla `Antigua and Barbud…
+  &lt;dbl&gt;       &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;  &lt;dbl&gt;    &lt;dbl&gt;                &lt;dbl&gt;
+1  2020        12.2    4.53    155.   0.466   22.2    0.123                0.430
+# … with 214 more variables: Argentina &lt;dbl&gt;, Armenia &lt;dbl&gt;, Aruba &lt;dbl&gt;,
+#   Australia &lt;dbl&gt;, Austria &lt;dbl&gt;, Azerbaijan &lt;dbl&gt;, Bahamas &lt;dbl&gt;,
+#   Bahrain &lt;dbl&gt;, Bangladesh &lt;dbl&gt;, Barbados &lt;dbl&gt;, Belarus &lt;dbl&gt;,
+#   Belgium &lt;dbl&gt;, Belize &lt;dbl&gt;, Benin &lt;dbl&gt;, Bermuda &lt;dbl&gt;, Bhutan &lt;dbl&gt;,
+#   Bolivia &lt;dbl&gt;, Bonaire, Saint Eustatius and Saba &lt;dbl&gt;,
+#   Bosnia and Herzegovina &lt;dbl&gt;, Botswana &lt;dbl&gt;, Brazil &lt;dbl&gt;,
+#   British Virgin Islands &lt;dbl&gt;, Brunei Darussalam &lt;dbl&gt;, Bulgaria &lt;dbl&gt;, …
+```
+]
+
+---
+count: false
+ 
+### Tidying data
+.panel1-tidy-auto[
+
+```r
+read_xlsx("data/co2_emissions.xlsx", skip = 1) %&gt;%
+  rename(year = 1) %&gt;%
+  pivot_longer(-year, names_to = "country", values_to = "value") %&gt;%
+  pivot_wider(names_from = country, values_from = value) %&gt;%
+* pivot_longer(-year, names_to = "country", values_to = "value")
+```
+]
+ 
+.panel2-tidy-auto[
+
+```
+# A tibble: 221 × 3
+    year country               value
+   &lt;dbl&gt; &lt;chr&gt;                 &lt;dbl&gt;
+ 1  2020 Afghanistan          12.2  
+ 2  2020 Albania               4.53 
+ 3  2020 Algeria             155.   
+ 4  2020 Andorra               0.466
+ 5  2020 Angola               22.2  
+ 6  2020 Anguilla              0.123
+ 7  2020 Antigua and Barbuda   0.430
+ 8  2020 Argentina           157.   
+ 9  2020 Armenia               5.89 
+10  2020 Aruba                 0.753
+# … with 211 more rows
+```
+]
+
+&lt;style&gt;
+.panel1-tidy-auto {
+  color: black;
+  width: 38.6060606060606%;
+  hight: 32%;
+  float: left;
+  padding-left: 1%;
+  font-size: 80%
+}
+.panel2-tidy-auto {
+  color: black;
+  width: 59.3939393939394%;
+  hight: 32%;
+  float: left;
+  padding-left: 1%;
+  font-size: 80%
+}
+.panel3-tidy-auto {
+  color: black;
+  width: NA%;
+  hight: 33%;
+  float: left;
+  padding-left: 1%;
+  font-size: 80%
+}
+&lt;/style&gt;
+
+
+
+
+---
+class: inverse, middle, center
+# Transform
+
+---
+count: false
+ 
+### Transforming data
+.panel1-transform-auto[
+
+```r
+*read_xlsx("data/co2_emissions.xlsx", skip = 1)
+```
+]
+ 
+.panel2-transform-auto[
+
+```
+# A tibble: 1 × 222
+   ...1 Afghanistan Albania Algeria Andorra Angola Anguilla `Antigua and Barbud…
+  &lt;dbl&gt;       &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;  &lt;dbl&gt;    &lt;dbl&gt;                &lt;dbl&gt;
+1  2020        12.2    4.53    155.   0.466   22.2    0.123                0.430
+# … with 214 more variables: Argentina &lt;dbl&gt;, Armenia &lt;dbl&gt;, Aruba &lt;dbl&gt;,
+#   Australia &lt;dbl&gt;, Austria &lt;dbl&gt;, Azerbaijan &lt;dbl&gt;, Bahamas &lt;dbl&gt;,
+#   Bahrain &lt;dbl&gt;, Bangladesh &lt;dbl&gt;, Barbados &lt;dbl&gt;, Belarus &lt;dbl&gt;,
+#   Belgium &lt;dbl&gt;, Belize &lt;dbl&gt;, Benin &lt;dbl&gt;, Bermuda &lt;dbl&gt;, Bhutan &lt;dbl&gt;,
+#   Bolivia &lt;dbl&gt;, Bonaire, Saint Eustatius and Saba &lt;dbl&gt;,
+#   Bosnia and Herzegovina &lt;dbl&gt;, Botswana &lt;dbl&gt;, Brazil &lt;dbl&gt;,
+#   British Virgin Islands &lt;dbl&gt;, Brunei Darussalam &lt;dbl&gt;, Bulgaria &lt;dbl&gt;, …
+```
+]
+
+---
+count: false
+ 
+### Transforming data
+.panel1-transform-auto[
+
+```r
+read_xlsx("data/co2_emissions.xlsx", skip = 1) %&gt;%
+* rename(year = 1)
+```
+]
+ 
+.panel2-transform-auto[
+
+```
+# A tibble: 1 × 222
+   year Afghanistan Albania Algeria Andorra Angola Anguilla `Antigua and Barbud…
+  &lt;dbl&gt;       &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;  &lt;dbl&gt;    &lt;dbl&gt;                &lt;dbl&gt;
+1  2020        12.2    4.53    155.   0.466   22.2    0.123                0.430
+# … with 214 more variables: Argentina &lt;dbl&gt;, Armenia &lt;dbl&gt;, Aruba &lt;dbl&gt;,
+#   Australia &lt;dbl&gt;, Austria &lt;dbl&gt;, Azerbaijan &lt;dbl&gt;, Bahamas &lt;dbl&gt;,
+#   Bahrain &lt;dbl&gt;, Bangladesh &lt;dbl&gt;, Barbados &lt;dbl&gt;, Belarus &lt;dbl&gt;,
+#   Belgium &lt;dbl&gt;, Belize &lt;dbl&gt;, Benin &lt;dbl&gt;, Bermuda &lt;dbl&gt;, Bhutan &lt;dbl&gt;,
+#   Bolivia &lt;dbl&gt;, Bonaire, Saint Eustatius and Saba &lt;dbl&gt;,
+#   Bosnia and Herzegovina &lt;dbl&gt;, Botswana &lt;dbl&gt;, Brazil &lt;dbl&gt;,
+#   British Virgin Islands &lt;dbl&gt;, Brunei Darussalam &lt;dbl&gt;, Bulgaria &lt;dbl&gt;, …
+```
+]
+
+---
+count: false
+ 
+### Transforming data
+.panel1-transform-auto[
+
+```r
+read_xlsx("data/co2_emissions.xlsx", skip = 1) %&gt;%
+  rename(year = 1) %&gt;%
+* pivot_longer(-year, names_to = "country", values_to = "value")
+```
+]
+ 
+.panel2-transform-auto[
+
+```
+# A tibble: 221 × 3
+    year country               value
+   &lt;dbl&gt; &lt;chr&gt;                 &lt;dbl&gt;
+ 1  2020 Afghanistan          12.2  
+ 2  2020 Albania               4.53 
+ 3  2020 Algeria             155.   
+ 4  2020 Andorra               0.466
+ 5  2020 Angola               22.2  
+ 6  2020 Anguilla              0.123
+ 7  2020 Antigua and Barbuda   0.430
+ 8  2020 Argentina           157.   
+ 9  2020 Armenia               5.89 
+10  2020 Aruba                 0.753
+# … with 211 more rows
+```
+]
+
+---
+count: false
+ 
+### Transforming data
+.panel1-transform-auto[
+
+```r
+read_xlsx("data/co2_emissions.xlsx", skip = 1) %&gt;%
+  rename(year = 1) %&gt;%
+  pivot_longer(-year, names_to = "country", values_to = "value") %&gt;%
+* mutate(percent = value / sum(value, na.rm = TRUE))
+```
+]
+ 
+.panel2-transform-auto[
+
+```
+# A tibble: 221 × 4
+    year country               value    percent
+   &lt;dbl&gt; &lt;chr&gt;                 &lt;dbl&gt;      &lt;dbl&gt;
+ 1  2020 Afghanistan          12.2   0.000360  
+ 2  2020 Albania               4.53  0.000134  
+ 3  2020 Algeria             155.    0.00459   
+ 4  2020 Andorra               0.466 0.0000138 
+ 5  2020 Angola               22.2   0.000657  
+ 6  2020 Anguilla              0.123 0.00000365
+ 7  2020 Antigua and Barbuda   0.430 0.0000127 
+ 8  2020 Argentina           157.    0.00464   
+ 9  2020 Armenia               5.89  0.000174  
+10  2020 Aruba                 0.753 0.0000223 
+# … with 211 more rows
+```
+]
+
+---
+count: false
+ 
+### Transforming data
+.panel1-transform-auto[
+
+```r
+read_xlsx("data/co2_emissions.xlsx", skip = 1) %&gt;%
+  rename(year = 1) %&gt;%
+  pivot_longer(-year, names_to = "country", values_to = "value") %&gt;%
+  mutate(percent = value / sum(value, na.rm = TRUE)) %&gt;%
+* arrange(desc(value))
+```
+]
+ 
+.panel2-transform-auto[
+
+```
+# A tibble: 221 × 4
+    year country                   value percent
+   &lt;dbl&gt; &lt;chr&gt;                     &lt;dbl&gt;   &lt;dbl&gt;
+ 1  2020 China                    10668.  0.316 
+ 2  2020 United States of America  4713.  0.139 
+ 3  2020 India                     2442.  0.0722
+ 4  2020 Russian Federation        1577.  0.0467
+ 5  2020 Japan                     1031.  0.0305
+ 6  2020 Iran                       745.  0.0220
+ 7  2020 Germany                    644.  0.0191
+ 8  2020 Saudi Arabia               626.  0.0185
+ 9  2020 South Korea                598.  0.0177
+10  2020 Indonesia                  590.  0.0174
+# … with 211 more rows
+```
+]
+
+---
+count: false
+ 
+### Transforming data
+.panel1-transform-auto[
+
+```r
+read_xlsx("data/co2_emissions.xlsx", skip = 1) %&gt;%
+  rename(year = 1) %&gt;%
+  pivot_longer(-year, names_to = "country", values_to = "value") %&gt;%
+  mutate(percent = value / sum(value, na.rm = TRUE)) %&gt;%
+  arrange(desc(value)) %&gt;%
+* slice(1:10)
+```
+]
+ 
+.panel2-transform-auto[
+
+```
+# A tibble: 10 × 4
+    year country                   value percent
+   &lt;dbl&gt; &lt;chr&gt;                     &lt;dbl&gt;   &lt;dbl&gt;
+ 1  2020 China                    10668.  0.316 
+ 2  2020 United States of America  4713.  0.139 
+ 3  2020 India                     2442.  0.0722
+ 4  2020 Russian Federation        1577.  0.0467
+ 5  2020 Japan                     1031.  0.0305
+ 6  2020 Iran                       745.  0.0220
+ 7  2020 Germany                    644.  0.0191
+ 8  2020 Saudi Arabia               626.  0.0185
+ 9  2020 South Korea                598.  0.0177
+10  2020 Indonesia                  590.  0.0174
+```
+]
+
+&lt;style&gt;
+.panel1-transform-auto {
+  color: black;
+  width: 38.6060606060606%;
+  hight: 32%;
+  float: left;
+  padding-left: 1%;
+  font-size: 80%
+}
+.panel2-transform-auto {
+  color: black;
+  width: 59.3939393939394%;
+  hight: 32%;
+  float: left;
+  padding-left: 1%;
+  font-size: 80%
+}
+.panel3-transform-auto {
+  color: black;
+  width: NA%;
+  hight: 33%;
+  float: left;
+  padding-left: 1%;
+  font-size: 80%
+}
+&lt;/style&gt;
+
+
+
+
+---
+class: inverse, middle, center
+# Visualise
+
+---
+count: false
+ 
+### Visualising data
+.panel1-visualise-auto[
+
+```r
+*read_xlsx("data/co2_emissions.xlsx", skip = 1)
+```
+]
+ 
+.panel2-visualise-auto[
+
+```
+# A tibble: 1 × 222
+   ...1 Afghanistan Albania Algeria Andorra Angola Anguilla `Antigua and Barbud…
+  &lt;dbl&gt;       &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;  &lt;dbl&gt;    &lt;dbl&gt;                &lt;dbl&gt;
+1  2020        12.2    4.53    155.   0.466   22.2    0.123                0.430
+# … with 214 more variables: Argentina &lt;dbl&gt;, Armenia &lt;dbl&gt;, Aruba &lt;dbl&gt;,
+#   Australia &lt;dbl&gt;, Austria &lt;dbl&gt;, Azerbaijan &lt;dbl&gt;, Bahamas &lt;dbl&gt;,
+#   Bahrain &lt;dbl&gt;, Bangladesh &lt;dbl&gt;, Barbados &lt;dbl&gt;, Belarus &lt;dbl&gt;,
+#   Belgium &lt;dbl&gt;, Belize &lt;dbl&gt;, Benin &lt;dbl&gt;, Bermuda &lt;dbl&gt;, Bhutan &lt;dbl&gt;,
+#   Bolivia &lt;dbl&gt;, Bonaire, Saint Eustatius and Saba &lt;dbl&gt;,
+#   Bosnia and Herzegovina &lt;dbl&gt;, Botswana &lt;dbl&gt;, Brazil &lt;dbl&gt;,
+#   British Virgin Islands &lt;dbl&gt;, Brunei Darussalam &lt;dbl&gt;, Bulgaria &lt;dbl&gt;, …
+```
+]
+
+---
+count: false
+ 
+### Visualising data
+.panel1-visualise-auto[
+
+```r
+read_xlsx("data/co2_emissions.xlsx", skip = 1) %&gt;%
+* rename(year = 1)
+```
+]
+ 
+.panel2-visualise-auto[
+
+```
+# A tibble: 1 × 222
+   year Afghanistan Albania Algeria Andorra Angola Anguilla `Antigua and Barbud…
+  &lt;dbl&gt;       &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;  &lt;dbl&gt;    &lt;dbl&gt;                &lt;dbl&gt;
+1  2020        12.2    4.53    155.   0.466   22.2    0.123                0.430
+# … with 214 more variables: Argentina &lt;dbl&gt;, Armenia &lt;dbl&gt;, Aruba &lt;dbl&gt;,
+#   Australia &lt;dbl&gt;, Austria &lt;dbl&gt;, Azerbaijan &lt;dbl&gt;, Bahamas &lt;dbl&gt;,
+#   Bahrain &lt;dbl&gt;, Bangladesh &lt;dbl&gt;, Barbados &lt;dbl&gt;, Belarus &lt;dbl&gt;,
+#   Belgium &lt;dbl&gt;, Belize &lt;dbl&gt;, Benin &lt;dbl&gt;, Bermuda &lt;dbl&gt;, Bhutan &lt;dbl&gt;,
+#   Bolivia &lt;dbl&gt;, Bonaire, Saint Eustatius and Saba &lt;dbl&gt;,
+#   Bosnia and Herzegovina &lt;dbl&gt;, Botswana &lt;dbl&gt;, Brazil &lt;dbl&gt;,
+#   British Virgin Islands &lt;dbl&gt;, Brunei Darussalam &lt;dbl&gt;, Bulgaria &lt;dbl&gt;, …
+```
+]
+
+---
+count: false
+ 
+### Visualising data
+.panel1-visualise-auto[
+
+```r
+read_xlsx("data/co2_emissions.xlsx", skip = 1) %&gt;%
+  rename(year = 1) %&gt;%
+* pivot_longer(-year, names_to = "country", values_to = "value")
+```
+]
+ 
+.panel2-visualise-auto[
+
+```
+# A tibble: 221 × 3
+    year country               value
+   &lt;dbl&gt; &lt;chr&gt;                 &lt;dbl&gt;
+ 1  2020 Afghanistan          12.2  
+ 2  2020 Albania               4.53 
+ 3  2020 Algeria             155.   
+ 4  2020 Andorra               0.466
+ 5  2020 Angola               22.2  
+ 6  2020 Anguilla              0.123
+ 7  2020 Antigua and Barbuda   0.430
+ 8  2020 Argentina           157.   
+ 9  2020 Armenia               5.89 
+10  2020 Aruba                 0.753
+# … with 211 more rows
+```
+]
+
+---
+count: false
+ 
+### Visualising data
+.panel1-visualise-auto[
+
+```r
+read_xlsx("data/co2_emissions.xlsx", skip = 1) %&gt;%
+  rename(year = 1) %&gt;%
+  pivot_longer(-year, names_to = "country", values_to = "value") %&gt;%
+* mutate(percent = value / sum(value, na.rm = TRUE))
+```
+]
+ 
+.panel2-visualise-auto[
+
+```
+# A tibble: 221 × 4
+    year country               value    percent
+   &lt;dbl&gt; &lt;chr&gt;                 &lt;dbl&gt;      &lt;dbl&gt;
+ 1  2020 Afghanistan          12.2   0.000360  
+ 2  2020 Albania               4.53  0.000134  
+ 3  2020 Algeria             155.    0.00459   
+ 4  2020 Andorra               0.466 0.0000138 
+ 5  2020 Angola               22.2   0.000657  
+ 6  2020 Anguilla              0.123 0.00000365
+ 7  2020 Antigua and Barbuda   0.430 0.0000127 
+ 8  2020 Argentina           157.    0.00464   
+ 9  2020 Armenia               5.89  0.000174  
+10  2020 Aruba                 0.753 0.0000223 
+# … with 211 more rows
+```
+]
+
+---
+count: false
+ 
+### Visualising data
+.panel1-visualise-auto[
+
+```r
+read_xlsx("data/co2_emissions.xlsx", skip = 1) %&gt;%
+  rename(year = 1) %&gt;%
+  pivot_longer(-year, names_to = "country", values_to = "value") %&gt;%
+  mutate(percent = value / sum(value, na.rm = TRUE)) %&gt;%
+* arrange(desc(value))
+```
+]
+ 
+.panel2-visualise-auto[
+
+```
+# A tibble: 221 × 4
+    year country                   value percent
+   &lt;dbl&gt; &lt;chr&gt;                     &lt;dbl&gt;   &lt;dbl&gt;
+ 1  2020 China                    10668.  0.316 
+ 2  2020 United States of America  4713.  0.139 
+ 3  2020 India                     2442.  0.0722
+ 4  2020 Russian Federation        1577.  0.0467
+ 5  2020 Japan                     1031.  0.0305
+ 6  2020 Iran                       745.  0.0220
+ 7  2020 Germany                    644.  0.0191
+ 8  2020 Saudi Arabia               626.  0.0185
+ 9  2020 South Korea                598.  0.0177
+10  2020 Indonesia                  590.  0.0174
+# … with 211 more rows
+```
+]
+
+---
+count: false
+ 
+### Visualising data
+.panel1-visualise-auto[
+
+```r
+read_xlsx("data/co2_emissions.xlsx", skip = 1) %&gt;%
+  rename(year = 1) %&gt;%
+  pivot_longer(-year, names_to = "country", values_to = "value") %&gt;%
+  mutate(percent = value / sum(value, na.rm = TRUE)) %&gt;%
+  arrange(desc(value)) %&gt;%
+* slice(1:10)
+```
+]
+ 
+.panel2-visualise-auto[
+
+```
+# A tibble: 10 × 4
+    year country                   value percent
+   &lt;dbl&gt; &lt;chr&gt;                     &lt;dbl&gt;   &lt;dbl&gt;
+ 1  2020 China                    10668.  0.316 
+ 2  2020 United States of America  4713.  0.139 
+ 3  2020 India                     2442.  0.0722
+ 4  2020 Russian Federation        1577.  0.0467
+ 5  2020 Japan                     1031.  0.0305
+ 6  2020 Iran                       745.  0.0220
+ 7  2020 Germany                    644.  0.0191
+ 8  2020 Saudi Arabia               626.  0.0185
+ 9  2020 South Korea                598.  0.0177
+10  2020 Indonesia                  590.  0.0174
+```
+]
+
+---
+count: false
+ 
+### Visualising data
+.panel1-visualise-auto[
+
+```r
+read_xlsx("data/co2_emissions.xlsx", skip = 1) %&gt;%
+  rename(year = 1) %&gt;%
+  pivot_longer(-year, names_to = "country", values_to = "value") %&gt;%
+  mutate(percent = value / sum(value, na.rm = TRUE)) %&gt;%
+  arrange(desc(value)) %&gt;%
+  slice(1:10) %&gt;%
+* ggplot(aes(percent, fct_reorder(country, percent)))
+```
+]
+ 
+.panel2-visualise-auto[
+![](index_files/figure-html/visualise_auto_07_output-1.png)&lt;!-- --&gt;
+]
+
+---
+count: false
+ 
+### Visualising data
+.panel1-visualise-auto[
+
+```r
+read_xlsx("data/co2_emissions.xlsx", skip = 1) %&gt;%
+  rename(year = 1) %&gt;%
+  pivot_longer(-year, names_to = "country", values_to = "value") %&gt;%
+  mutate(percent = value / sum(value, na.rm = TRUE)) %&gt;%
+  arrange(desc(value)) %&gt;%
+  slice(1:10) %&gt;%
+  ggplot(aes(percent, fct_reorder(country, percent))) +
+* geom_col(fill = "#27A0CC", width = 0.9)
+```
+]
+ 
+.panel2-visualise-auto[
+![](index_files/figure-html/visualise_auto_08_output-1.png)&lt;!-- --&gt;
+]
+
+---
+count: false
+ 
+### Visualising data
+.panel1-visualise-auto[
+
+```r
+read_xlsx("data/co2_emissions.xlsx", skip = 1) %&gt;%
+  rename(year = 1) %&gt;%
+  pivot_longer(-year, names_to = "country", values_to = "value") %&gt;%
+  mutate(percent = value / sum(value, na.rm = TRUE)) %&gt;%
+  arrange(desc(value)) %&gt;%
+  slice(1:10) %&gt;%
+  ggplot(aes(percent, fct_reorder(country, percent))) +
+  geom_col(fill = "#27A0CC", width = 0.9) +
+* scale_x_continuous(expand = c(0, 0), labels = percent_format(accuracy = 1))
+```
+]
+ 
+.panel2-visualise-auto[
+![](index_files/figure-html/visualise_auto_09_output-1.png)&lt;!-- --&gt;
+]
+
+---
+count: false
+ 
+### Visualising data
+.panel1-visualise-auto[
+
+```r
+read_xlsx("data/co2_emissions.xlsx", skip = 1) %&gt;%
+  rename(year = 1) %&gt;%
+  pivot_longer(-year, names_to = "country", values_to = "value") %&gt;%
+  mutate(percent = value / sum(value, na.rm = TRUE)) %&gt;%
+  arrange(desc(value)) %&gt;%
+  slice(1:10) %&gt;%
+  ggplot(aes(percent, fct_reorder(country, percent))) +
+  geom_col(fill = "#27A0CC", width = 0.9) +
+  scale_x_continuous(expand = c(0, 0), labels = percent_format(accuracy = 1)) +
+* labs(x = NULL, y = NULL,
+*      title = "China's emissions are double the US",
+*      subtitle = paste0("Share of global CO&lt;sub&gt;2&lt;/sub&gt; emissions from fossil fuels, 2020&lt;/span&gt;"),
+*      caption = "Source: Global Carbon Project")
+```
+]
+ 
+.panel2-visualise-auto[
+![](index_files/figure-html/visualise_auto_10_output-1.png)&lt;!-- --&gt;
+]
+
+---
+count: false
+ 
+### Visualising data
+.panel1-visualise-auto[
+
+```r
+read_xlsx("data/co2_emissions.xlsx", skip = 1) %&gt;%
+  rename(year = 1) %&gt;%
+  pivot_longer(-year, names_to = "country", values_to = "value") %&gt;%
+  mutate(percent = value / sum(value, na.rm = TRUE)) %&gt;%
+  arrange(desc(value)) %&gt;%
+  slice(1:10) %&gt;%
+  ggplot(aes(percent, fct_reorder(country, percent))) +
+  geom_col(fill = "#27A0CC", width = 0.9) +
+  scale_x_continuous(expand = c(0, 0), labels = percent_format(accuracy = 1)) +
+  labs(x = NULL, y = NULL,
+       title = "China's emissions are double the US",
+       subtitle = paste0("Share of global CO&lt;sub&gt;2&lt;/sub&gt; emissions from fossil fuels, 2020&lt;/span&gt;"),
+       caption = "Source: Global Carbon Project") +
+* theme_minimal(base_size = 14)
+```
+]
+ 
+.panel2-visualise-auto[
+![](index_files/figure-html/visualise_auto_11_output-1.png)&lt;!-- --&gt;
+]
+
+---
+count: false
+ 
+### Visualising data
+.panel1-visualise-auto[
+
+```r
+read_xlsx("data/co2_emissions.xlsx", skip = 1) %&gt;%
+  rename(year = 1) %&gt;%
+  pivot_longer(-year, names_to = "country", values_to = "value") %&gt;%
+  mutate(percent = value / sum(value, na.rm = TRUE)) %&gt;%
+  arrange(desc(value)) %&gt;%
+  slice(1:10) %&gt;%
+  ggplot(aes(percent, fct_reorder(country, percent))) +
+  geom_col(fill = "#27A0CC", width = 0.9) +
+  scale_x_continuous(expand = c(0, 0), labels = percent_format(accuracy = 1)) +
+  labs(x = NULL, y = NULL,
+       title = "China's emissions are double the US",
+       subtitle = paste0("Share of global CO&lt;sub&gt;2&lt;/sub&gt; emissions from fossil fuels, 2020&lt;/span&gt;"),
+       caption = "Source: Global Carbon Project") +
+  theme_minimal(base_size = 14) +
+* theme(text = element_text(family = "Open Sans"),
+*       plot.margin = unit(rep(1, 4), "cm"),
+*       panel.grid.major.y = element_blank(),
+*       panel.grid.minor = element_blank(),
+*       plot.title.position = "plot",
+*       plot.title = element_markdown(face = "bold", size = 22, lineheight = 26),
+*       plot.subtitle = element_markdown(margin = margin(b = 20)),
+*       plot.caption = element_text(colour = "grey60", margin = margin(t = 20, b = -10)),
+*       axis.text = element_text(colour = "#333333"))
+```
+]
+ 
+.panel2-visualise-auto[
+![](index_files/figure-html/visualise_auto_12_output-1.png)&lt;!-- --&gt;
+]
+
+&lt;style&gt;
+.panel1-visualise-auto {
+  color: black;
+  width: 38.6060606060606%;
+  hight: 32%;
+  float: left;
+  padding-left: 1%;
+  font-size: 80%
+}
+.panel2-visualise-auto {
+  color: black;
+  width: 59.3939393939394%;
+  hight: 32%;
+  float: left;
+  padding-left: 1%;
+  font-size: 80%
+}
+.panel3-visualise-auto {
+  color: black;
+  width: NA%;
+  hight: 33%;
+  float: left;
+  padding-left: 1%;
+  font-size: 80%
+}
+&lt;/style&gt;
+
+
+
+
+---
+## Further resources
+
+**Beginners**     
+- [RStudio primers](https://rstudio.cloud/learn/primers)   
+- [R for Data Science](https://r4ds.had.co.nz/) by Hadley Wickham and Garrett Grolemund   
+
+**Data visualisation**    
+- [Fundamentals of Data Visualization](https://clauswilke.com/dataviz) by Claus Wilke
+- [Data Visualization: A practical introduction](http://socviz.co/) by Kieran Healy   
+- [SDS 375: Data Visualization in R](https://wilkelab.org/SDS375/)
+- [BBC Visual and Data Journalism cookbook for R graphics](https://bbc.github.io/rcookbook)   
+
+**Statistics**   
+- [Discovering Statistics Using R](https://us.sagepub.com/en-us/nam/discovering-statistics-using-r-and-rstudio/book261351) by Andy Field  
+- [Statistics: An Introduction Using R](https://www.wiley.com/en-gb/Statistics%3A+An+Introduction+Using+R%2C+2nd+Edition-p-9781118941096) by Michael J. Crawley   
+
+**Style guides**      
+- [The tidyverse style guide](http://style.tidyverse.org/)   
+    </textarea>
+<style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>
+<script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>
+<script>var slideshow = remark.create({
+"highlightStyle": "github",
+"highlightLines": true,
+"countIncrementalSlides": false,
+"slideNumberFormat": "%current%",
+"ratio": "16:9"
+});
+if (window.HTMLWidgets) slideshow.on('afterShowSlide', function (slide) {
+  window.dispatchEvent(new Event('resize'));
+});
+(function(d) {
+  var s = d.createElement("style"), r = d.querySelector(".remark-slide-scaler");
+  if (!r) return;
+  s.type = "text/css"; s.innerHTML = "@page {size: " + r.style.width + " " + r.style.height +"; }";
+  d.head.appendChild(s);
+})(document);
+
+(function(d) {
+  var el = d.getElementsByClassName("remark-slides-area");
+  if (!el) return;
+  var slide, slides = slideshow.getSlides(), els = el[0].children;
+  for (var i = 1; i < slides.length; i++) {
+    slide = slides[i];
+    if (slide.properties.continued === "true" || slide.properties.count === "false") {
+      els[i - 1].className += ' has-continuation';
+    }
+  }
+  var s = d.createElement("style");
+  s.type = "text/css"; s.innerHTML = "@media print { .has-continuation { display: none; } }";
+  d.head.appendChild(s);
+})(document);
+// delete the temporary CSS (for displaying all slides initially) when the user
+// starts to view slides
+(function() {
+  var deleted = false;
+  slideshow.on('beforeShowSlide', function(slide) {
+    if (deleted) return;
+    var sheets = document.styleSheets, node;
+    for (var i = 0; i < sheets.length; i++) {
+      node = sheets[i].ownerNode;
+      if (node.dataset["target"] !== "print-only") continue;
+      node.parentNode.removeChild(node);
+    }
+    deleted = true;
+  });
+})();
+(function() {
+  "use strict"
+  // Replace <script> tags in slides area to make them executable
+  var scripts = document.querySelectorAll(
+    '.remark-slides-area .remark-slide-container script'
+  );
+  if (!scripts.length) return;
+  for (var i = 0; i < scripts.length; i++) {
+    var s = document.createElement('script');
+    var code = document.createTextNode(scripts[i].textContent);
+    s.appendChild(code);
+    var scriptAttrs = scripts[i].attributes;
+    for (var j = 0; j < scriptAttrs.length; j++) {
+      s.setAttribute(scriptAttrs[j].name, scriptAttrs[j].value);
+    }
+    scripts[i].parentElement.replaceChild(s, scripts[i]);
+  }
+})();
+(function() {
+  var links = document.getElementsByTagName('a');
+  for (var i = 0; i < links.length; i++) {
+    if (/^(https?:)?\/\//.test(links[i].getAttribute('href'))) {
+      links[i].target = '_blank';
+    }
+  }
+})();
+// adds .remark-code-has-line-highlighted class to <pre> parent elements
+// of code chunks containing highlighted lines with class .remark-code-line-highlighted
+(function(d) {
+  const hlines = d.querySelectorAll('.remark-code-line-highlighted');
+  const preParents = [];
+  const findPreParent = function(line, p = 0) {
+    if (p > 1) return null; // traverse up no further than grandparent
+    const el = line.parentElement;
+    return el.tagName === "PRE" ? el : findPreParent(el, ++p);
+  };
+
+  for (let line of hlines) {
+    let pre = findPreParent(line);
+    if (pre && !preParents.includes(pre)) preParents.push(pre);
+  }
+  preParents.forEach(p => p.classList.add("remark-code-has-line-highlighted"));
+})(document);</script>
+
+<script>
+slideshow._releaseMath = function(el) {
+  var i, text, code, codes = el.getElementsByTagName('code');
+  for (i = 0; i < codes.length;) {
+    code = codes[i];
+    if (code.parentNode.tagName !== 'PRE' && code.childElementCount === 0) {
+      text = code.textContent;
+      if (/^\\\((.|\s)+\\\)$/.test(text) || /^\\\[(.|\s)+\\\]$/.test(text) ||
+          /^\$\$(.|\s)+\$\$$/.test(text) ||
+          /^\\begin\{([^}]+)\}(.|\s)+\\end\{[^}]+\}$/.test(text)) {
+        code.outerHTML = code.innerHTML;  // remove <code></code>
+        continue;
+      }
+    }
+    i++;
+  }
+};
+slideshow._releaseMath(document);
+</script>
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+(function () {
+  var script = document.createElement('script');
+  script.type = 'text/javascript';
+  script.src  = 'https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML';
+  if (location.protocol !== 'file:' && /^https?:/.test(script.src))
+    script.src  = script.src.replace(/^https?:/, '');
+  document.getElementsByTagName('head')[0].appendChild(script);
+})();
+</script>
+  </body>
+</html>

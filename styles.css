@@ -1,0 +1,27 @@
+@import url('https://fonts.googleapis.com/css2?family=Bitter:ital,wght@0,400;0,700;1,400&display=swap');
+
+.remark-slide-content { 
+  background-color: #16161d;
+  color: #fff;
+  font-family: 'Bitter', serif;
+  }
+
+.remark-code {
+  line-height: 1.5; 
+  font-size: 90%
+}
+
+.remark-code, .remark-inline-code { 
+  color: #fff
+}
+
+.remark-code-line-highlighted { 
+  background-color: rgba(206,41,103,0.3); 
+}
+
+@media print {
+  .has-continuation {
+    display: block;
+  }
+}
+
