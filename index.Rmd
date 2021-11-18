@@ -72,7 +72,7 @@ class: inverse, middle, center
 
 ---
 class: middle, center
-```{r, echo=FALSE, out.width="70%", fig.align='center', fig.cap='<a href="https://twitter.com/jburnmurdoch/status/1237737352879112194">John Burn-Murdoch, Financial Times</a>'}
+```{r, echo=FALSE, out.width="70%", fig.align='center', fig.cap='<a href="https://www.youtube.com/watch?v=L5_4kuoiiKU">John Burn-Murdoch, Financial Times</a>'}
 knitr::include_graphics("img/FT.jpeg")
 ```
 
@@ -294,5 +294,7 @@ read_xlsx("data/co2_emissions.xlsx", skip = 1) %>%
 - [Discovering Statistics Using R](https://us.sagepub.com/en-us/nam/discovering-statistics-using-r-and-rstudio/book261351) by Andy Field  
 - [Statistics: An Introduction Using R](https://www.wiley.com/en-gb/Statistics%3A+An+Introduction+Using+R%2C+2nd+Edition-p-9781118941096) by Michael J. Crawley   
 
-**Style guides**      
-- [The tidyverse style guide](http://style.tidyverse.org/)   
+**Help**   
+- [StackOverflow](https://stackoverflow.com/questions/tagged/r)   
+- [RStudio Community](https://community.rstudio.com)   
+- [Twitter #rstats hashtag](https://twitter.com/search?q=%23rstats&src=tyah)
